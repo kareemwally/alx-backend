@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """
+simple module to extract the right pages from the CSV file
 """
 import csv
 import math
@@ -42,9 +43,5 @@ class Server:
         assert page > 0 and page_size > 0, \
             "page and page_size should be intgers greater than 0"
         start, end = index_range(page, page_size)
-        res = []
-        if len(self.__dataset) < end:
-            return res
-        for i in range(start, end):
-            res.append(self.__dataset[i])
-        return res
+        dataset = self.dataset()
+        return dataset[start:end] if start < len(dataset) else []
