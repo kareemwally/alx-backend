@@ -56,13 +56,15 @@ class Server:
             "page should be intger greater than 0"
         assert isinstance(page_size, int) and page_size > 0, \
             "page_size should be intger greater than 0"
+        dataset = self.dataset()
         data = self.get_page(page, page_size)
-        prev_page = start - 1 if start - 1 > 0 else None
-        next_page = end + 1 if end + 1 < len(dataset) else None
+        total_pages = math.ceil(len(dataset) / page_size)
+        prev_page = page - 1 if page > 1 else None
+        next_page = page + 1 if page < total_pages else None
 
         return {'page_size': page_size,
                 'page': page,
                 'data': data,
                 'next_page': next_page,
                 'prev_page': prev_page,
-                'total_pages': len(dataset)}
+                'total_pages': total_pages}
