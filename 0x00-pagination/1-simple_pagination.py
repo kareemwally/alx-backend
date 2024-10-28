@@ -40,8 +40,10 @@ class Server:
         using the index_ange function to get the right rows of the
         csv file
         """
-        assert page > 0 and page_size > 0, \
-            "page and page_size should be intgers greater than 0"
+        assert isinstance(page, int) and page > 0, \
+            "page should be intger greater than 0"
+        assert isinstance(page_size, int) and page_size > 0, \
+            "page_size should be intger greater than 0"
         start, end = index_range(page, page_size)
         dataset = self.dataset()
         return dataset[start:end] if start < len(dataset) else []
