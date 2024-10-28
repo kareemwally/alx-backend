@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+"""
+"""
+import csv
+import math
+from typing import List
+
+
+def index_range(page, page_size):
+    """
+    a simple function to return a tuple of start, end indexes
+    """
+    start_index = (page - 1) * page_size
+    end_index = page * page_size
+    return tuple((start_index, end_index))
+
+
+class Server:
+    """Server class to paginate a database of popular baby names.
+    """
+    DATA_FILE = "Popular_Baby_Names.csv"
+
+    def __init__(self):
+        self.__dataset = None
+
+    def dataset(self) -> List[List]:
+        """Cached dataset
+        """
+        if self.__dataset is None:
+            with open(self.DATA_FILE) as f:
+                reader = csv.reader(f)
+                dataset = [row for row in reader]
+            self.__dataset = dataset[1:]
+
+        return self.__dataset
+
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        using the index_ange function to get the right rows of the
+        csv file
+        """
+        assert page > 0 and page_size > 0, \
+            "page and page_size should be intgers greater than 0"
+        start, end = index_range(page, page_size)
+        res = []
+        if len(self.__dataset) < end:
+            return res
+        for i in range(start, end):
+            res.append(self.__dataset[i])
+        return res
