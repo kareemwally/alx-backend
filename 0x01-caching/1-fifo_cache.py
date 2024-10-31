@@ -20,7 +20,7 @@ class FIFOCache(BaseCaching):
         """
         adding a new key:value pair into our dictionary
         """
-        if super().MAX_ITEMS < len(self.cache_data):
+        if super().MAX_ITEMS <= len(self.cache_data):
             keys = list(self.cache_data.keys())
             self.cache_data.pop(keys[0])
             print("DISCARD: {}".format(keys[0]))
