@@ -6,7 +6,7 @@ from flask import render_template, Flask, request
 from flask_babel import Babel
 
 
-def get_locale():
+def get_locale() -> None:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
