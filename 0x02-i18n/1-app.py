@@ -2,12 +2,14 @@
 """
 routes
 """
-from app import app
-from flask import render_template
+from flask import render_template, Flask
 from flask_babel import Babel
 
 
-class Config -> None:
+app = Flask(__name__)
+
+
+class Config:
     """
     configuring the languagaes
     """
@@ -31,4 +33,4 @@ def index() -> None:
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
