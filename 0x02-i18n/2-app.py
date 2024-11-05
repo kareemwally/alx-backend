@@ -30,9 +30,7 @@ def index() -> None:
     """
     returning the 1-html page
     """
-    return render_template("1-index.html",
-                           title='Welcome to Holberton',
-                           body="Hello world")
+    return render_template("2-index.html")
 
 
 if __name__ == "__main__":
