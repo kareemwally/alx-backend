@@ -7,7 +7,7 @@ from flask import render_template
 from flask_babel import Babel
 
 
-class Config:
+class Config -> None:
     """
     configuring the languagaes
     """
@@ -21,7 +21,7 @@ babel = Babel(app)
 
 
 @app.route('/')
-def index():
+def index() -> None:
     """
     returning the 1-html page
     """
