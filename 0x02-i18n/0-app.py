@@ -12,5 +12,6 @@ def index():
     """
     returning the specified html page
     """
-    return render_template("0-index.html", title='Welcome to Holberton',
+    return render_template("../templates/0-index.html",
+                           title='Welcome to Holberton',
                            body="Hello world")
