@@ -26,7 +26,7 @@ users = {
 }
 
 
-def get_user():
+def get_user() -> None:
     """
     Retrieve the user from the mock database using the
     login_as parameter.
@@ -40,7 +40,7 @@ def get_user():
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """
     Execute before all other functions.
     Set the user retrieved from get_user() as a global on flask.g.user.
@@ -49,7 +49,7 @@ def before_request():
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> None:
     """
     Determine the best match for supported languages.
     If a user is logged in, use their locale. Otherwise,
@@ -61,7 +61,7 @@ def get_locale():
 
 
 @app.route('/', strict_slashes=False)
-def index():
+def index() -> None:
     """Route for index page"""
     return render_template('5-index.html')
 
