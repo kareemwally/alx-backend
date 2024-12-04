@@ -19,3 +19,7 @@ async function displaySchoolValue(schoolName) {
         console.error(err);
     }
 }
+
+displaySchoolValue('Holberton');
+setNewSchool('HolbertonSanFrancisco', '100');
+displaySchoolValue('HolbertonSanFrancisco');
